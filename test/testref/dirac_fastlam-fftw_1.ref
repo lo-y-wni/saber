@@ -21,8 +21,8 @@ Groups:
   - vert_coord: [1.0000000000000000e+00]
   Mask size: 100%
 Fields:
-  stream_function: 3.0000000000000000e+00
-  velocity_potential: 0.0000000000000000e+00
+  air_horizontal_streamfunction: 3.0000000000000000e+00
+  air_horizontal_velocity_potential: 0.0000000000000000e+00
   air_pressure_at_surface: 3.0000000000000000e+00
 Norm of input parameter rh: 6.3308838310007071e+06
 Norm of input parameter rv: 1.0775159836059709e+03
@@ -82,6 +82,6 @@ Groups:
   - vert_coord: [1.0000000000000000e+00]
   Mask size: 100%
 Fields:
-  stream_function: 1.2268798178664296e+01
-  velocity_potential: 0.0000000000000000e+00
+  air_horizontal_streamfunction: 1.2268798178664296e+01
+  air_horizontal_velocity_potential: 0.0000000000000000e+00
   air_pressure_at_surface: 1.1456179726661745e+01

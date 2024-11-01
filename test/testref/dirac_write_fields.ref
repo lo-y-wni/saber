@@ -263,21 +263,21 @@ Inner inverse test for block spectral to gauss passed: U Uinv (U x) == (U x)
 Outer inverse test for block spectral to gauss passed: Uinv U (Uinv x) == (Uinv x)
 Did not write file testdata/dirac_write_fields/fields_final_multiply_1.nc
 Fields:
-  streamfunction: 2.0132111960602580e+02
+  air_horizontal_streamfunction: 2.0013324071652488e+02
 Did not write file testdata/dirac_write_fields/fields_final_leftinverse_1.nc
 Fields:
-  streamfunction: 2.0132111960602580e+02
+  air_horizontal_streamfunction: 2.0013324071652488e+02
 Did not write file testdata/dirac_write_fields/fields_final_multiply_2.nc
 Fields:
-  streamfunction: 2.0132111960602580e+02
+  air_horizontal_streamfunction: 2.0013324071652488e+02
 Inner inverse test for block write fields passed: U Uinv (U x) == (U x)
 Did not write file testdata/dirac_write_fields/fields_final_leftinverse_2.nc
 Fields:
-  streamfunction: 2.0124138256140810e+02
+  air_horizontal_streamfunction: 2.0040331712628748e+02
 Did not write file testdata/dirac_write_fields/fields_final_multiply_3.nc
 Fields:
-  streamfunction: 2.0124138256140810e+02
+  air_horizontal_streamfunction: 2.0040331712628748e+02
 Did not write file testdata/dirac_write_fields/fields_final_leftinverse_3.nc
 Fields:
-  streamfunction: 2.0124138256140810e+02
+  air_horizontal_streamfunction: 2.0040331712628748e+02
 Outer inverse test for block write fields passed: Uinv U (Uinv x) == (Uinv x)

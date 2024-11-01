@@ -15,8 +15,8 @@ geometry:
   partitioner: checkerboard
   groups:
   - variables:
-    - stream_function
-    - velocity_potential
+    - air_horizontal_streamfunction
+    - air_horizontal_velocity_potential
     levels: 10
   - variables:
     - air_pressure_at_surface
@@ -24,8 +24,8 @@ geometry:
 background:
   date: 2010-01-01T12:00:00Z
   state variables:
-  - stream_function
-  - velocity_potential
+  - air_horizontal_streamfunction
+  - air_horizontal_velocity_potential
   - air_pressure_at_surface
   filepath: testdata/convertstate_lam/rv_avg
 background error:
@@ -44,27 +44,27 @@ background error:
         explicit length-scales: true
         horizontal length-scale:
         - groups:
-          - stream_function
+          - air_horizontal_streamfunction
           value: 150.0e3
         vertical length-scale:
         - groups:
-          - stream_function
+          - air_horizontal_streamfunction
           value: 5.0
       grids:
       - model:
           variables:
-          - stream_function
-          - velocity_potential
+          - air_horizontal_streamfunction
+          - air_horizontal_velocity_potential
           groups:
-          - group name: stream_function
+          - group name: air_horizontal_streamfunction
             variables:
-            - stream_function
-            - velocity_potential
+            - air_horizontal_streamfunction
+            - air_horizontal_velocity_potential
       - model:
           variables:
           - air_pressure_at_surface
           groups:
-          - group name: stream_function
+          - group name: air_horizontal_streamfunction
             variables:
             - air_pressure_at_surface
   saber outer blocks:

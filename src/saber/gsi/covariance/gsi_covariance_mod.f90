@@ -291,10 +291,11 @@ real(kind=kind_real), pointer :: ps(:,:)
 integer, parameter :: rseed = 3
 
 ! Get Atlas field
-if (fields%has('stream_function').and.fields%has('velocity_potential')) then
-  afield = fields%field('stream_function')
+if (fields%has('air_horizontal_streamfunction').and. &
+    fields%has('air_horizontal_velocity_potential')) then
+  afield = fields%field('air_horizontal_streamfunction')
   call afield%data(psi)
-  afield = fields%field('velocity_potential')
+  afield = fields%field('air_horizontal_velocity_potential')
   call afield%data(chi)
 elseif (fields%has('eastward_wind').and.fields%has('northward_wind')) then
   afield = fields%field('eastward_wind')
@@ -610,14 +611,14 @@ end subroutine multiply
       ier=0
    endif
    if (trim(vname) == 'sf') then
-      if (.not.fields%has('stream_function')) return
-      afield = fields%field('stream_function')
+      if (.not.fields%has('air_horizontal_streamfunction')) return
+      afield = fields%field('air_horizontal_streamfunction')
       call afield%data(rank2)
       ier=0
    endif
    if (trim(vname) == 'vp') then
-      if (.not.fields%has('velocity_potential')) return
-      afield = fields%field('velocity_potential')
+      if (.not.fields%has('air_horizontal_velocity_potential')) return
+      afield = fields%field('air_horizontal_velocity_potential')
       call afield%data(rank2)
       ier=0
    endif

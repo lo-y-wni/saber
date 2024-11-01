@@ -236,9 +236,9 @@ if (mpl%main) then
       gsivar = ''
       gsi%var2d(iv) = .false.
       select case (trim(nam%variables(iv)))
-      case ('stream_function')
+      case ('air_horizontal_streamfunction')
          gsivar = 'sf'
-      case ('velocity_potential')
+      case ('air_horizontal_velocity_potential')
          gsivar = 'vp'
       case ('air_temperature')
          gsivar = 't'
@@ -357,9 +357,9 @@ if (mpl%main) then
          ! Find variable
          select case (trim(adjustl(var)))
          case ('sf')
-            bumpvar = 'stream_function'
+            bumpvar = 'air_horizontal_streamfunction'
          case ('vp')
-            bumpvar = 'velocity_potential'
+            bumpvar = 'air_horizontal_velocity_potential'
          case ('t')
             bumpvar = 'air_temperature'
          case ('q')

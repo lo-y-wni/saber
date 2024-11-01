@@ -41,10 +41,10 @@ geometry:
     - qt
     - rht
     - water_vapor_mixing_ratio_wrt_moist_air_and_condensed_water
-    - streamfunction
+    - air_horizontal_streamfunction
     - svp
     - unbalanced_pressure_levels_minus_one
-    - velocity_potential
+    - air_horizontal_velocity_potential
     - virtual_potential_temperature
     levels: 70
   - variables:
