@@ -49,6 +49,7 @@
 #include "oops/util/parameters/Parameters.h"
 #include "oops/util/parameters/RequiredParameter.h"
 
+#include "saber/oops/ErrorCovarianceParameters.h"
 #include "saber/oops/Utilities.h"
 #include "saber/util/HorizontalProfiles.h"
 
@@ -62,8 +63,7 @@ template <typename MODEL> class ErrorCovarianceToolboxParameters :
   OOPS_CONCRETE_PARAMETERS(ErrorCovarianceToolboxParameters, oops::ApplicationParameters)
 
  public:
-  typedef oops::ModelSpaceCovarianceParametersWrapper<MODEL> CovarianceParameters_;
-  typedef typename oops::Geometry<MODEL>::Parameters_        GeometryParameters_;
+  typedef typename oops::Geometry<MODEL>::Parameters_  GeometryParameters_;
 
   /// Geometry parameters.
   oops::RequiredParameter<GeometryParameters_> geometry{"geometry", this};
@@ -72,7 +72,7 @@ template <typename MODEL> class ErrorCovarianceToolboxParameters :
   oops::RequiredParameter<eckit::LocalConfiguration> background{"background", this};
 
   /// Background error covariance model.
-  oops::RequiredParameter<CovarianceParameters_> backgroundError{"background error", this};
+  oops::RequiredParameter<eckit::LocalConfiguration> backgroundError{"background error", this};
 
   /// Geometry parameters.
   oops::Parameter<bool> parallel{"parallel subwindows", true, this};
@@ -109,7 +109,7 @@ template <typename MODEL> class ErrorCovarianceToolboxParameters :
 template <typename MODEL> class ErrorCovarianceToolbox : public oops::Application {
   typedef oops::ModelSpaceCovarianceBase<MODEL>           CovarianceBase_;
   typedef oops::CovarianceFactory<MODEL>                  CovarianceFactory_;
-  typedef oops::ModelSpaceCovarianceParametersBase<MODEL> CovarianceParametersBase_;
+  typedef ModelSpaceCovarianceParametersBase<MODEL>       CovarianceParametersBase_;
   typedef oops::Geometry<MODEL>                           Geometry_;
   typedef oops::Increment<MODEL>                          Increment_;
   typedef oops::Increment4D<MODEL>                        Increment4D_;
@@ -205,9 +205,7 @@ template <typename MODEL> class ErrorCovarianceToolbox : public oops::Applicatio
     // Setup time
     util::DateTime time = xx[0].validTime();
 
-    // Background error covariance parameters
-    const CovarianceParametersBase_ & covarParams
-      = params.backgroundError.value().covarianceParameters;
+    const eckit::LocalConfiguration covarConf(fullConfigUpdated, "background error");
 
     // Dirac test
     const auto & diracParams = params.dirac.value();
@@ -242,14 +240,17 @@ template <typename MODEL> class ErrorCovarianceToolbox : public oops::Applicatio
 
       // Apply B matrix components recursively
       std::string id;
-      dirac(covarParams.toConfiguration(), testConf, id, geom, vars, xx, dxi);
+      dirac(covarConf, testConf, id, geom, vars, xx, dxi);
     }
 
+    // Background error covariance parameters
+    CovarianceParametersBase_ covarParams;
+    covarParams.deserialize(covarConf);
     const auto & randomizationSize = covarParams.randomizationSize.value();
     if ((diracParams == boost::none) || (randomizationSize != boost::none)) {
       // Background error covariance training
       std::unique_ptr<CovarianceBase_> Bmat(CovarianceFactory_::create(
-                                            geom, vars, covarParams, xx, xx));
+                                            geom, vars, covarConf, xx, xx));
 
       // Randomization
       randomization(params, geom, vars, xx, Bmat, ntasks);

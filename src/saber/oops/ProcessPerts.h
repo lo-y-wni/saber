@@ -147,8 +147,6 @@ template <typename MODEL> class ProcessPertsParameters :
   OOPS_CONCRETE_PARAMETERS(ProcessPertsParameters, oops::ApplicationParameters)
 
  public:
-  typedef oops::ModelSpaceCovarianceParametersWrapper<MODEL> CovarianceParameters_;
-
   typedef typename oops::Geometry<MODEL>::Parameters_    GeometryParameters_;
   typedef BandParameters<MODEL>                          BandParameters_;
 
@@ -172,7 +170,6 @@ template <typename MODEL> class ProcessPertsParameters :
 template <typename MODEL> class ProcessPerts : public oops::Application {
   typedef oops::ModelSpaceCovarianceBase<MODEL>             CovarianceBase_;
   typedef oops::CovarianceFactory<MODEL>                    CovarianceFactory_;
-  typedef oops::ModelSpaceCovarianceParametersBase<MODEL>   CovarianceParametersBase_;
   typedef oops::Geometry<MODEL>                             Geometry_;
   typedef oops::Increment<MODEL>                            Increment_;
   typedef oops::State<MODEL>                                State_;
