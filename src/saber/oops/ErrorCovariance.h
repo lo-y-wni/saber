@@ -177,9 +177,7 @@ ErrorCovariance<MODEL>::ErrorCovariance(const Geometry_ & geom,
     const auto & dualResGeomConf = dualResParams->geometry.value();
     if (dualResGeomConf != boost::none) {
       // Create dualRes geometry
-      typename Geometry_::Parameters_ dualResGeomParams;
-      dualResGeomParams.deserialize(*dualResGeomConf);
-      dualResGeom = new Geometry_(dualResGeomParams, geom.getComm());
+      dualResGeom = new Geometry_(*dualResGeomConf, geom.getComm());
     }
     // Background and first guess at dual resolution geometry
     const State4D_ xbDualRes(*dualResGeom, xb);

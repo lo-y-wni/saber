@@ -63,10 +63,8 @@ template <typename MODEL> class ErrorCovarianceToolboxParameters :
   OOPS_CONCRETE_PARAMETERS(ErrorCovarianceToolboxParameters, oops::ApplicationParameters)
 
  public:
-  typedef typename oops::Geometry<MODEL>::Parameters_  GeometryParameters_;
-
   /// Geometry parameters.
-  oops::RequiredParameter<GeometryParameters_> geometry{"geometry", this};
+  oops::RequiredParameter<eckit::LocalConfiguration> geometry{"geometry", this};
 
   /// Background parameters.
   oops::RequiredParameter<eckit::LocalConfiguration> background{"background", this};

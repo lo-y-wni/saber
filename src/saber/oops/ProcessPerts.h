@@ -147,11 +147,10 @@ template <typename MODEL> class ProcessPertsParameters :
   OOPS_CONCRETE_PARAMETERS(ProcessPertsParameters, oops::ApplicationParameters)
 
  public:
-  typedef typename oops::Geometry<MODEL>::Parameters_    GeometryParameters_;
   typedef BandParameters<MODEL>                          BandParameters_;
 
   /// Geometry parameters.
-  oops::RequiredParameter<GeometryParameters_> geometry{"geometry", this};
+  oops::RequiredParameter<eckit::LocalConfiguration> geometry{"geometry", this};
 
   /// Background parameters.
   oops::RequiredParameter<eckit::LocalConfiguration> background{"background", this};
