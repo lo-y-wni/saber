@@ -186,10 +186,9 @@ template <typename MODEL> class ProcessPerts : public oops::Application {
   virtual ~ProcessPerts() {}
 // -----------------------------------------------------------------------------
 
-  int execute(const eckit::Configuration & fullConfig, bool validate) const override {
+  int execute(const eckit::Configuration & fullConfig) const override {
     // Deserialize parameters
     ProcessPertsParameters_ params;
-    if (validate) params.validate(fullConfig);
     params.deserialize(fullConfig);
 
     // Define space and time communicators
@@ -393,16 +392,6 @@ template <typename MODEL> class ProcessPerts : public oops::Application {
     }
 
     return 0;
-  }
-// -----------------------------------------------------------------------------
-  void outputSchema(const std::string & outputPath) const override {
-    ProcessPertsParameters_ params;
-    params.outputSchema(outputPath);
-  }
-// -----------------------------------------------------------------------------
-  void validateConfig(const eckit::Configuration & fullConfig) const override {
-    ProcessPertsParameters_ params;
-    params.validate(fullConfig);
   }
 // -----------------------------------------------------------------------------
  private:

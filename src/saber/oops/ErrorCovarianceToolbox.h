@@ -125,10 +125,9 @@ template <typename MODEL> class ErrorCovarianceToolbox : public oops::Applicatio
 // -----------------------------------------------------------------------------
   virtual ~ErrorCovarianceToolbox() {}
 // -----------------------------------------------------------------------------
-  int execute(const eckit::Configuration & fullConfig, bool validate) const override {
+  int execute(const eckit::Configuration & fullConfig) const override {
     // Deserialize parameters
     ErrorCovarianceToolboxParameters_ params;
-    if (validate) params.validate(fullConfig);
     params.deserialize(fullConfig);
 
     // Define number of subwindows
@@ -255,16 +254,6 @@ template <typename MODEL> class ErrorCovarianceToolbox : public oops::Applicatio
     }
 
     return 0;
-  }
-// -----------------------------------------------------------------------------
-  void outputSchema(const std::string & outputPath) const override {
-    ErrorCovarianceToolboxParameters_ params;
-    params.outputSchema(outputPath);
-  }
-// -----------------------------------------------------------------------------
-  void validateConfig(const eckit::Configuration & fullConfig) const override {
-    ErrorCovarianceToolboxParameters_ params;
-    params.validate(fullConfig);
   }
 // -----------------------------------------------------------------------------
  private:
