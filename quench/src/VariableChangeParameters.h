@@ -1,5 +1,5 @@
 /*
- * (C) Copyright 2022 UCAR.
+ * (C) Copyright 2024-     UCAR.
  * (C) Copyright 2023-2024 Meteorologisk Institutt
  *
  * This software is licensed under the terms of the Apache Licence Version 2.0
@@ -7,6 +7,8 @@
  */
 
 #pragma once
+
+#include "eckit/config/LocalConfiguration.h"
 
 #include "oops/base/VariableChangeParametersBase.h"
 

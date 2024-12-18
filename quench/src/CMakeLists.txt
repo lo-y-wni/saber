@@ -17,10 +17,13 @@ Interpolation.cc
 Interpolation.h
 LinearVariableChange.h
 LinearVariableChange.cc
+LinearVariableChangeParameters.h
 ModelData.h
 State.cc
 State.h
 VariableChange.h
+VariableChange.cc
+VariableChangeParameters.h
 
 )
 
